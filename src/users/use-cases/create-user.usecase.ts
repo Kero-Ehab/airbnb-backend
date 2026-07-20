@@ -1,14 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { CreateUserDto } from "../dto/create-user.dto";
-import { UserRepository } from "../repository/user.repository";
+import { BadRequestExeption } from "src/common/errors-handling/custom-exceptions/bad-request.exception";
 import * as bcrypt from 'bcrypt';
-
-
-
-
-
-
+import { UserResponseDto } from "../dto/user-response.dto";
+import { UserRepository } from "../repository/user.repository";
+import { ConfigService } from "@nestjs/config";
+import { plainToInstance } from "class-transformer";
 
 @Injectable()
 export class CreateUserUseCase{
@@ -23,29 +20,24 @@ export class CreateUserUseCase{
             email: createUserDto.email 
         });
         if(existingUserEmail){
-            throw new Error('Email already exists');
+            throw new BadRequestExeption('Email already exists');
         }
         const existingUserPhoneNumber = await this.userRepository.findOne({
             phoneNumber: createUserDto.phoneNumber
         })
         if(existingUserPhoneNumber){
-            throw new Error('Phone number already exists');
+            throw new BadRequestExeption('Phone number already exists');
         }
         const hashedPassword = await bcrypt.hash(
             createUserDto.password, 
             this.configService.get<number>('BCRYPT_SALT_ROUNDS') || 10
         );
 
-        const user = await this.userRepository.create({
+        const createdUser = await this.userRepository.create({
             ...createUserDto,
             password:hashedPassword,
         })
 
-        return user;
-
+        return plainToInstance(UserResponseDto, createdUser.toObject());
     }
-
-
-
-
 }
