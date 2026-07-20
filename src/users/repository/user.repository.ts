@@ -6,7 +6,7 @@ import { HydratedDocument, Model } from "mongoose";
 
 
 @Injectable()
-export class UerRepository extends BaseRepository<User>{
+export class UserRepository extends BaseRepository<User>{
     constructor(
         @InjectModel(ModelNames.USERS)
         private readonly userModel:Model<HydratedDocument<User>>
