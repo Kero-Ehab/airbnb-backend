@@ -7,6 +7,7 @@ import { ClientSession, QueryFilter, UpdateQuery } from 'mongoose';
 import { User } from './schemas/user.schema';
 import { UserResponseDto } from './dto/user-response.dto';
 import { plainToInstance } from 'class-transformer';
+import { UpdateUserDto } from './dto/update-user.dto';
 
  
 
@@ -23,12 +24,11 @@ export class UsersService {
     }
 
     async updateUserRaw(
-        query: UpdateQuery<User>,
-        data: Record<string, unknown>,
-        session?:ClientSession
-    ):Promise<void>{
-        return this.updateUserRawUseCase.execute(query, data, session);
-
+       id:string,
+       body:UpdateUserDto
+    ):Promise<UserResponseDto>{
+        const updatedUser = this.updateUserRawUseCase.execute(id, body);
+        return plainToInstance(UserResponseDto, updatedUser)
     }
 
     async findOne(query: QueryFilter<User>):Promise<UserResponseDto>{

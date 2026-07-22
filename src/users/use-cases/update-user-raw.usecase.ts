@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { UserRepository } from "../repository/user.repository";
-import {ClientSession, UpdateQuery} from "mongoose";
-import { User } from "../schemas/user.schema";
+import { UpdateUserDto } from "../dto/update-user.dto";
 
 @Injectable()
 export class UpdateUserRawUseCase{
@@ -10,14 +9,13 @@ export class UpdateUserRawUseCase{
     ){}
 
     async execute(
-        filterQuery:UpdateQuery<User>,
-        data:Record<string, unknown>,
-        session?:ClientSession
-    ):Promise<void>{
-        await this.userRepository.findOneAndUpdate(
-            filterQuery,
-            data, 
-            {session}
+        userId:string,
+        body:UpdateUserDto,
+    ){
+        return await this.userRepository.findByIdAndUpdate(
+           userId,
+           body,
+           {returnDocument: 'after'}
         );
     }
 }
