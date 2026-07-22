@@ -4,7 +4,7 @@ import {ClientSession, UpdateQuery} from "mongoose";
 import { User } from "../schemas/user.schema";
 
 @Injectable()
-export class updateUserRawUseCase{
+export class UpdateUserRawUseCase{
     constructor(
         private readonly userRepository:UserRepository
     ){}

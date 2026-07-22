@@ -8,6 +8,7 @@ import { HydratedDocument, Model } from "mongoose";
 @Injectable()
 export class UserRepository extends BaseRepository<User>{
     constructor(
+        // Model provider registered by MongooseModule.forFeature() in UsersModule
         @InjectModel(ModelNames.USERS)
         private readonly userModel:Model<HydratedDocument<User>>
     ){

@@ -30,7 +30,7 @@ export class CreateUserUseCase{
         }
         const hashedPassword = await bcrypt.hash(
             createUserDto.password, 
-            this.configService.get<number>('BCRYPT_SALT_ROUNDS') || 10
+            this.configService.getOrThrow<number>('BCRYPT_SALT_ROUNDS') || 10
         );
 
         const createdUser = await this.userRepository.create({
