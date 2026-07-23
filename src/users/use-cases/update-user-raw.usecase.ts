@@ -15,7 +15,10 @@ export class UpdateUserRawUseCase{
         return await this.userRepository.findByIdAndUpdate(
            userId,
            body,
-           {returnDocument: 'after'}
+           {
+            returnDocument: 'after',
+            lean:true
+           }
         );
     }
 }

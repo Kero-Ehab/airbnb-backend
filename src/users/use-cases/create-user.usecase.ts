@@ -28,9 +28,11 @@ export class CreateUserUseCase{
         if(existingUserPhoneNumber){
             throw new BadRequestExeption('Phone number already exists');
         }
+
+        const salt = Number(this.configService.getOrThrow<number>('BCRYPT_SALT_ROUNDS') || 10)
         const hashedPassword = await bcrypt.hash(
             createUserDto.password, 
-            this.configService.getOrThrow<number>('BCRYPT_SALT_ROUNDS') || 10
+            salt
         );
 
         const createdUser = await this.userRepository.create({

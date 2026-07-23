@@ -105,10 +105,17 @@ export class BaseRepository<T>{
         updateQuery:UpdateQuery<HydratedDocument<T>>,
         options:QueryOptions={}
     ){
-        const document = await this.model.findByIdAndUpdate(id, updateQuery, {
+        const query =  this.model.findByIdAndUpdate(
+            id, 
+            updateQuery, 
+            {
             returnDocument: 'after',
             ...options,  
         })
+        if(options.lean){
+            query.lean();
+        }
+        const document = await query;
         return document;
     }
 
