@@ -13,6 +13,11 @@ export class User {
 
     @Prop({required: true})
     phoneNumber: string;
+
+    @Prop({
+        default:false
+    })
+    isVerified:boolean;
 }
 
 

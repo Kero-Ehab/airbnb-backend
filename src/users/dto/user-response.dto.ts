@@ -39,6 +39,9 @@ export class UserResponseDto{
     @Expose()
     phoneNumber:string
 
+    @Expose()
+    isVerified:boolean
+
     @Exclude()
     __V:number;
 }
