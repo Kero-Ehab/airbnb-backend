@@ -34,7 +34,7 @@ export class VerifyOtpUseCase{
         if(!otp)throw new BadRequestException('Invalid OTP');
         if(otp.code!== body.code)throw new BadRequestException('Invalid OTP');
         if(otp.isVerified)throw new BadRequestException('OTP already verified');
-        if(new Date > otp.expiresAt)
+        if(new Date() > otp.expiresAt)
             throw new BadRequestException('OTP expired');
     }
 }
