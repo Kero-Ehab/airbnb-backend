@@ -17,8 +17,9 @@ export class VerifyOtpUseCase{
 
 
     async execute (body: VerifyOtpDto):Promise<void>{
-        const otp = await this.findOtpRawUsecase.execute({email:body.email})
-        this.validateOtpBeforeVerify(otp, body);
+        const code = await this.findOtpRawUsecase.execute({email:body.email})
+        console.log(code)
+        this.validateOtpBeforeVerify(code, body);
 
         await this.otpRepository.findOneAndUpdate(
             {
@@ -30,11 +31,11 @@ export class VerifyOtpUseCase{
         )
     }
 
-    private validateOtpBeforeVerify(otp:OtpRawResponseDto, body:VerifyOtpDto){
-        if(!otp)throw new BadRequestException('Invalid OTP');
-        if(otp.code!== body.code)throw new BadRequestException('Invalid OTP');
-        if(otp.isVerified)throw new BadRequestException('OTP already verified');
-        if(new Date() > otp.expiresAt)
+    private validateOtpBeforeVerify(code:OtpRawResponseDto, body:VerifyOtpDto){
+        if(!code)throw new BadRequestException('Invalid OTP');
+        if(code.code !== body.code)throw new BadRequestException('Invalid OTP');
+        if(code.isVerified)throw new BadRequestException('OTP already verified');
+        if(new Date() > code.expiresAt)
             throw new BadRequestException('OTP expired');
     }
 }

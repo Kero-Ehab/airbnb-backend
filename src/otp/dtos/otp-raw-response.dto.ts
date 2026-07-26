@@ -8,7 +8,7 @@ export class OtpRawResponseDto{
         description:'OTP code',
         example:'123456'
     })
-    code:string;
+    code:number;
 
     @ApiProperty({
         description:'OTP expiration date',

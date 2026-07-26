@@ -13,7 +13,7 @@ export class FindOtpRawUsecase{
     ){}
 
     async execute(query: QueryFilter<Otp>): Promise<OtpRawResponseDto> {
-        const otp = this.otpRepository.findOne({query})
-        return plainToInstance(OtpRawResponseDto, otp)
+        const code = this.otpRepository.findOne(query)
+        return plainToInstance(OtpRawResponseDto, code)
     }
 }

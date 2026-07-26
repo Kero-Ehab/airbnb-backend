@@ -14,14 +14,14 @@ export class SendOtpUseCase{
 
     async execute (email:string):Promise<void>{
         await this.validateBeforeSendOtp(email);
-        const otp = await this.generateOtp() 
+        const code = await this.generateOtp() 
         const expiresAt = new Date();
         expiresAt.setMinutes(expiresAt.getMinutes() + 10);
 
         await this.otpRepository.findOneAndUpdate(
             {email},
             {
-                otp,
+                code,
                 expiresAt,
                 isVerified:false
             },
@@ -33,7 +33,7 @@ export class SendOtpUseCase{
         await this.mailService.sendEmail({
             to:email,
             subject:'OTP Verification',
-            text:`Your OTP is ${otp}`
+            text:`Your OTP is ${code}`
         })
         
 

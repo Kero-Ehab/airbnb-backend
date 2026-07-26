@@ -6,7 +6,7 @@ export class Otp{
     email:string;
 
     @Prop({required:true})
-    code:string;
+    code:number;
 
     @Prop({required:true})
     expiresAt:Date;

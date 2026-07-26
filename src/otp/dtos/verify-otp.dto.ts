@@ -19,6 +19,5 @@ export class VerifyOtpDto{
         example: '123456'  
     })
     @IsNotEmpty()
-    @IsEmail()
-    code:string
+    code:number
 }
