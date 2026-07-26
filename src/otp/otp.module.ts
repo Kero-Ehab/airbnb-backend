@@ -9,13 +9,13 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { ModelNames } from "src/common/data-access";
 import { OtpSchema } from "./schemas/otp.schema";
 import { MailModule } from "src/mail/mail.module";
-import { UsersModule } from "src/users/users.module";
+import { UserModule } from "src/users/users.module";
 
 @Module({
     imports:[
         MongooseModule.forFeature([{name: ModelNames.OTP, schema:OtpSchema}]),
         MailModule,
-        UsersModule
+        UserModule
     ],
     providers:[
         FindOtpRawUsecase,

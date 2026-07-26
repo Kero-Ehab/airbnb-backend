@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { OtpRepository } from "../respository/otp.respository";
 import { MailService } from "src/mail/mail.service";
-import { UsersService } from "src/users/users.service";
+import { UserService } from "src/users/users.service";
 
 @Injectable()
 export class SendOtpUseCase{
@@ -9,7 +9,7 @@ export class SendOtpUseCase{
     constructor(
         private readonly otpRepository: OtpRepository,
         private readonly mailService:MailService,
-        private readonly userService:UsersService
+        private readonly userService:UserService
     ){}
 
     async execute (email:string):Promise<void>{

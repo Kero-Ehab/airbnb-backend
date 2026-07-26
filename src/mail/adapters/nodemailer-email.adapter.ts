@@ -1,10 +1,11 @@
+import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { SendEmailDto } from "../dtos/send-email.dto";
 import { EmailAdapterInterface } from "../interfaces/email-adapter.interface";
 import * as nodemailer from 'nodemailer'
 import { EnvironmentInterface, Ismtp } from "src/common/configuration/enviroment.interface";
 
-
+@Injectable()
 export class NodemailerEmailAdapter implements EmailAdapterInterface{
     private readonly transporter:nodemailer.Transporter;
     
@@ -13,6 +14,7 @@ export class NodemailerEmailAdapter implements EmailAdapterInterface{
     ){
         const smtp = this.configService.getOrThrow<Ismtp>('smtp');
         this.transporter = nodemailer.createTransport(smtp);// this type is Transporter
+        console.log(smtp);
     }
 
 

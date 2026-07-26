@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
+import { UserService } from './users.service';
 import { CreateUserUseCase } from './use-cases/create-user.usecase';
 import { UserRepository } from './repository/user.repository';
 import { UpdateUserRawUseCase } from './use-cases/update-user-raw.usecase';
@@ -12,13 +12,14 @@ import { UserSchema } from './schemas/user.schema';
   imports:[MongooseModule.forFeature([{name:ModelNames.USERS, schema:UserSchema}])],
   controllers: [UsersController],
   providers: [
-    UsersService,
+    UserService,
     CreateUserUseCase,
     UserRepository,
     UpdateUserRawUseCase
-  ]
+  ],
+  exports:[UserService]
 })
-export class UsersModule {
+export class UserModule {
   
 }
 

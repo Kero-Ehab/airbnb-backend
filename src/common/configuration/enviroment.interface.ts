@@ -1,10 +1,10 @@
 export interface EnvironmentInterface {
     port:number;
-    fullbackLanguage: string;
+    //fullbackLanguage: string;
     mongodbUri:string;
-    jwtSecret:string;
-    accessTokenExpireIn:string;
-    refreshTokenExpireIn:string;
+    //jwtSecret:string;
+    //accessTokenExpireIn:string;
+    //refreshTokenExpireIn:string;
     //systemAdmin:ISystemAdmin;
     //awsS3:IAwsS3;
     smtp:Ismtp
