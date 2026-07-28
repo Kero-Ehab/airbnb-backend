@@ -1,6 +1,6 @@
 import { Roles } from "src/common/constants/roles.constants"; 
 
-export interface JwtService{
+export interface JwtPayload{
     id:string;
     roles:Roles;
 }
