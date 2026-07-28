@@ -14,7 +14,6 @@ export class GenerateTokensUsecase {
         private readonly refreshTokenRepository: RefreshTokenRepository,
         private readonly configService:ConfigService
     ){}
-
     async execute (payload: JwtPayload){
         const accessToken = await this.jwtService.signAsync(payload);
         const refreshToken = await this.jwtService.signAsync(
@@ -32,7 +31,6 @@ export class GenerateTokensUsecase {
                 upsert: true 
             }
         )
-
 
         return {accessToken, refreshToken};
     }
