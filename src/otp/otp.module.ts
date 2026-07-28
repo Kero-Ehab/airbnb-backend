@@ -25,6 +25,6 @@ import { UserModule } from "src/users/users.module";
         OtpRepository
     ],
     controllers:[OtpController],
-    exports:[OtpModule]
+    exports:[OtpService]
 })
 export class OtpModule{}
