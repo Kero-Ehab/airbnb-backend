@@ -10,7 +10,7 @@ export class LoginDto{
     })
     @IsEmail()
     @IsNotEmpty()
-    email:String;
+    email:string;
 
 
     @ApiProperty({

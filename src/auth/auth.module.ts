@@ -10,8 +10,9 @@ import { UserModule } from 'src/users/users.module';
 import { OtpModule } from 'src/otp/otp.module';
 import { RefreshTokenRepository } from './repository/refresh-token.repository';
 import { JwtModule } from '@nestjs/jwt';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 import { EnvironmentInterface } from 'src/common/configuration/enviroment.interface';
+import { LoginAsUserUsecase } from './use-cases/login-as-user.usecase';
 
 @Module({
     imports:[
@@ -34,6 +35,7 @@ import { EnvironmentInterface } from 'src/common/configuration/enviroment.interf
         AuthService,
         GenerateTokensUsecase,
         RegisterUseCase,
+        LoginAsUserUsecase,
         RefreshTokenRepository
     ],
     controllers:[AuthController],
