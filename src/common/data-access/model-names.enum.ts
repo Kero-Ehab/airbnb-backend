@@ -3,4 +3,5 @@ export enum ModelNames {
     OTP = 'opt',
     AUTH = 'auth',
     REFRESH_TOKENS = 'refresh-tokens',
+    SYSTEM_ADMINS = 'system-admins',
 }
