@@ -13,6 +13,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { EnvironmentInterface } from 'src/common/configuration/enviroment.interface';
 import { LoginAsUserUsecase } from './use-cases/login-as-user.usecase';
+import { LoginAsAdminUsecase } from './use-cases/login-as-system-admin..usecase';
 
 @Module({
     imports:[
@@ -36,6 +37,7 @@ import { LoginAsUserUsecase } from './use-cases/login-as-user.usecase';
         GenerateTokensUsecase,
         RegisterUseCase,
         LoginAsUserUsecase,
+        LoginAsAdminUsecase,
         RefreshTokenRepository
     ],
     controllers:[AuthController],
