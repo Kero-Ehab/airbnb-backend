@@ -4,11 +4,6 @@ import { UserService } from "src/users/users.service";
 import { GenerateTokensUsecase } from "./generate-token.usecase";
 
 
-
-
-
-
-
 @Injectable()
 export class LoginAsAdminUsecase{
 
@@ -18,3 +13,4 @@ export class LoginAsAdminUsecase{
     ){}
 
 }
+
