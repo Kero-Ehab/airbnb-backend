@@ -5,16 +5,16 @@ export interface EnvironmentInterface {
     jwtSecret:string;
     accessTokenExpireIn:string;
     //refreshTokenExpireIn:string;
-    //systemAdmin:ISystemAdmin;
+    systemAdmin:ISystemAdmin;
     //awsS3:IAwsS3;
     smtp:Ismtp
 }
 
-// export interface ISystemAdmin{
-//     name:string;
-//     email:string;
-//     password:string;
-// }
+export interface ISystemAdmin{
+    name:string;
+    email:string;
+    password:string;
+}
 
 
 
