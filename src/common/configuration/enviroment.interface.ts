@@ -8,6 +8,7 @@ export interface EnvironmentInterface {
     systemAdmin:ISystemAdmin;
     //awsS3:IAwsS3;
     smtp:Ismtp
+    bcryptSaltRounds: number;
 }
 
 export interface ISystemAdmin{

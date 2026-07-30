@@ -19,5 +19,6 @@ export const defaultEnv = (): EnvironmentInterface =>({
             user: process.env.SMTP_USER!,
             pass: process.env.SMTP_PASS!
         }        
-    }
+    },
+    bcryptSaltRounds: Number(process.env.BCRYPT_SALT_ROUNDS),
 })

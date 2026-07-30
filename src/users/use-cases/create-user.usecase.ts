@@ -6,12 +6,13 @@ import { UserResponseDto } from "../dto/user-response.dto";
 import { UserRepository } from "../repository/user.repository";
 import { ConfigService } from "@nestjs/config";
 import { plainToInstance } from "class-transformer";
+import { EnvironmentInterface } from "src/common/configuration/enviroment.interface";
 
 @Injectable()
 export class CreateUserUseCase{
     constructor(
         private readonly userRepository:UserRepository,
-        private readonly configService:ConfigService
+        private readonly configService:ConfigService<EnvironmentInterface>
 
     ){}
 
@@ -29,7 +30,7 @@ export class CreateUserUseCase{
             throw new BadRequestExeption('Phone number already exists');
         }
 
-        const salt = Number(this.configService.getOrThrow<number>('BCRYPT_SALT_ROUNDS') || 10)
+       const salt = this.configService.getOrThrow<Number>('bcryptSaltRounds')
         const hashedPassword = await bcrypt.hash(
             createUserDto.password, 
             salt
