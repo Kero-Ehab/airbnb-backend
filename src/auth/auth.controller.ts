@@ -18,8 +18,6 @@ export class AuthController{
 
     @Post('login')
     login(@Body() body: LoginDto):Promise<AuthResponseDto>{
-        return 
+        return this.authService.login(body)
     }
-
-
 }
