@@ -20,13 +20,13 @@ export class LoginDto{
     @IsNotEmpty()
     password:string;
 
-    @ApiProperty({
-        type:'string',
-        enum:Roles,
-        description:'user role',
-        example:Roles.USER,
-    })
-    @IsNotEmpty()
-    @IsEnum(Roles)
-    role:Roles.USER;
+    // @ApiProperty({
+    //     type:'string',
+    //     enum:Roles,
+    //     description:'user role',
+    //     example:Roles.USER,
+    // })
+    // @IsNotEmpty()
+    // @IsEnum(Roles)
+    // role:Roles.USER;
 }

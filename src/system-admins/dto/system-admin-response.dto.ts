@@ -23,4 +23,6 @@ export class SystemAdminResponseDto{
         example: true,
     })
     isSuperAdmin: boolean;
+
+    password:string
 }

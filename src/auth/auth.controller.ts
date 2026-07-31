@@ -15,4 +15,7 @@ export class AuthController{
         return this.authService.register(body)
     }
 
+    @Post('login')
+    
+
 }

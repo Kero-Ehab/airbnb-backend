@@ -14,6 +14,8 @@ import { ConfigService } from '@nestjs/config';
 import { EnvironmentInterface } from 'src/common/configuration/enviroment.interface';
 import { LoginAsUserUsecase } from './use-cases/login-as-user.usecase';
 import { LoginAsAdminUsecase } from './use-cases/login-as-system-admin..usecase';
+import { SystemAdminModule } from 'src/system-admins/system-admin.module';
+import { LoginUsecase } from './use-cases/login.usecase';
 
 @Module({
     imports:[
@@ -22,6 +24,7 @@ import { LoginAsAdminUsecase } from './use-cases/login-as-system-admin..usecase'
         ]),
         UserModule,
         OtpModule,
+        SystemAdminModule,
         JwtModule.registerAsync({
             useFactory:(configService:ConfigService<EnvironmentInterface>) =>({
                 secret: configService.getOrThrow('jwtSecret'),
@@ -38,6 +41,7 @@ import { LoginAsAdminUsecase } from './use-cases/login-as-system-admin..usecase'
         RegisterUseCase,
         LoginAsUserUsecase,
         LoginAsAdminUsecase,
+        LoginUsecase,
         RefreshTokenRepository
     ],
     controllers:[AuthController],

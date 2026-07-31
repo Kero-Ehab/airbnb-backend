@@ -5,12 +5,13 @@ import { SystemAdminRepository } from "./repository/system-admin.repository";
 import { systemAdminService } from "./system-admins.service";
 import { FindOneSystemAdminUsecase } from "./usecase/find-one.usecase";
 import { InitializeSystemAdminUsecase } from "./usecase/initialize-system-admin.usecase";
+import { SystemAdminSchema } from "./schema/system-admin.schema";
 
 @Module({
     imports:[
         MongooseModule.forFeature([{
-            schema: SystemAdminModule,
-            name: ModelNames.SYSTEM_ADMINS
+            name: ModelNames.SYSTEM_ADMINS,
+            schema: SystemAdminSchema            
         }])
     ],
     providers:[
