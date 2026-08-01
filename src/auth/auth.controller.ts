@@ -5,7 +5,6 @@ import { AuthResponseDto } from "./dto/auth-response.dto";
 import { LoginDto } from "./dto/login.dto";
 
 
-
 @Controller('auth')
 export class AuthController{
 

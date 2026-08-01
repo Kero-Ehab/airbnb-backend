@@ -20,6 +20,9 @@ import { SystemAdminSchema } from "./schema/system-admin.schema";
         FindOneSystemAdminUsecase,
         InitializeSystemAdminUsecase
     ],
-    exports:[systemAdminService]
+    exports:[
+        systemAdminService,
+        SystemAdminRepository
+    ]
 })
 export class SystemAdminModule {}

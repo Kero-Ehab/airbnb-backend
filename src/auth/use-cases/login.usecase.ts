@@ -24,18 +24,20 @@ export class LoginUsecase{
         
         if(admin){
             return this.loginAsAdminUsecase.execute(
-                admin,
+                body,
             )
         }
 
         const user = await this.userReository.findOne({
             email: body.email
         })
+
+        console.log('USER:', user);
         
         if(user){
             return this.loginAsUserUsecase.execute(body)
         }
 
-        throw new UnauthorizedException('Invalid credentials')
+        throw new UnauthorizedException('Invalid credentials 1')
     }
 }

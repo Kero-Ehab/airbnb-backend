@@ -18,7 +18,10 @@ export class RegisterUseCase{
     ){}
 
     async execute(body: RegisterDto):Promise<AuthResponseDto>{
-        const createUserDto: CreateUserDto = {...body} 
+        const createUserDto: CreateUserDto = {
+            ...body,
+            isVerified: true
+        } 
         
         await this.validateEmailVerification(body.email)
         await this.validateUserNotExists(body.email)

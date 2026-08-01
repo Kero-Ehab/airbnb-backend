@@ -23,7 +23,11 @@ export class LoginAsUserUsecase{
         if(!user){
             throw new BadRequestException('User is not Exist')
         }
-        const isPasswordMatched = await bcrypt.compare(
+        
+        console.log(body.password);
+        console.log(user.password);
+        
+         const isPasswordMatched = await bcrypt.compare(
             body.password,
             user.password
         )

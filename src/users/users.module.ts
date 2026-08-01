@@ -17,7 +17,10 @@ import { UserSchema } from './schemas/user.schema';
     UserRepository,
     UpdateUserRawUseCase
   ],
-  exports:[UserService]
+  exports:[
+    UserService,
+    UserRepository
+  ]
 })
 export class UserModule {
   

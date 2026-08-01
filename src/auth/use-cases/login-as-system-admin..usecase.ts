@@ -21,14 +21,16 @@ export class LoginAsAdminUsecase{
         })
 
         if(!systemAdmin){
-            throw new BadRequestException('Invalid credentials')
+            throw new BadRequestException('Invalid credentials 2')
         }
-        const isPasswordMatched = await bycrpt.compare(
+console.log('Email:', loginDto.email);
+console.log('Password:', JSON.stringify(loginDto.password));
+console.log('Password length:', loginDto.password?.length);        const isPasswordMatched = await bycrpt.compare(
             loginDto.password,
             systemAdmin.password
         ) 
         if (!isPasswordMatched){
-            throw new BadRequestException('Invalid credentials');
+            throw new BadRequestException('Invalid credentials 3');
         }    
 
         const {accessToken, refreshToken} = 
