@@ -16,6 +16,7 @@ import { LoginAsUserUsecase } from './use-cases/login-as-user.usecase';
 import { LoginAsAdminUsecase } from './use-cases/login-as-system-admin..usecase';
 import { SystemAdminModule } from 'src/system-admins/system-admin.module';
 import { LoginUsecase } from './use-cases/login.usecase';
+import { RefreshTokenUsecase } from './use-cases/refresh-token.usecase';
 
 @Module({
     imports:[
@@ -41,6 +42,7 @@ import { LoginUsecase } from './use-cases/login.usecase';
         RegisterUseCase,
         LoginAsUserUsecase,
         LoginAsAdminUsecase,
+        RefreshTokenUsecase,
         LoginUsecase,
         RefreshTokenRepository
     ],
