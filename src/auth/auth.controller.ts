@@ -3,6 +3,7 @@ import { AuthService } from "./auth.service";
 import { RegisterDto } from "./dto/register.dto";
 import { AuthResponseDto } from "./dto/auth-response.dto";
 import { LoginDto } from "./dto/login.dto";
+import { RefreshTokenDto } from "./dto/refresh-token.dto";
 
 
 @Controller('auth')
@@ -18,5 +19,10 @@ export class AuthController{
     @Post('login')
     login(@Body() body: LoginDto):Promise<AuthResponseDto>{
         return this.authService.login(body)
+    }
+
+    @Post('refresh-token')
+    refreshToken(@Body() body: RefreshTokenDto):Promise<AuthResponseDto>{
+        return this.authService.refreshToken(body)
     }
 }

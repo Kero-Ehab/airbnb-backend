@@ -24,7 +24,7 @@ export class AuthService{
         return this.loginUsecase.execute(body)
     }
 
-    async refreshToken(body: RefreshTokenDto){
+    async refreshToken(body: RefreshTokenDto):Promise<AuthResponseDto>{
         return this.refreshTokenUsecase.execute(body)
     }
 }
