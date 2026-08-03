@@ -1,4 +1,4 @@
-import { Get, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { RegisterUseCase } from "./use-cases/register.usecase";
 import { RegisterDto } from "./dto/register.dto";
 import { AuthResponseDto } from "./dto/auth-response.dto";
@@ -32,6 +32,4 @@ export class AuthService{
         return this.refreshTokenUsecase.execute(body)
     }
 
-    // @Get('me')
-    // getMe(@CurrentAccount()){}
 }
