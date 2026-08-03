@@ -39,7 +39,7 @@ export class LoginAsUserUsecase{
         const {refreshToken, accessToken} = 
         await this.generateTokensUsecase.execute({
             id:user._id.toString(),
-            roles: Roles.USER
+            role: Roles.USER
         }) 
 
         return plainToInstance(AuthResponseDto, {accessToken, refreshToken})

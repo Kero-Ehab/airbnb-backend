@@ -59,7 +59,7 @@ export class RefreshTokenUsecase{
         const {accessToken , refreshToken} = 
             await this.generateTokenUsecase.execute({
                 id: refreshTokenDoc.userId,
-                roles: decodedToken.payload.role as Roles
+                role: decodedToken.payload.role as Roles
             })
 
         return plainToInstance(AuthResponseDto , {accessToken, refreshToken})

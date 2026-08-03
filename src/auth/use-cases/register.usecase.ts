@@ -30,7 +30,7 @@ export class RegisterUseCase{
 
         const {accessToken, refreshToken}= await this.generateTokensUsecase.execute({
             id: createdUser._id,
-            roles: Roles.USER
+            role: Roles.USER
         })
 
         return {accessToken, refreshToken}

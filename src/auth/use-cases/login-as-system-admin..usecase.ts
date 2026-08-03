@@ -35,7 +35,7 @@ export class LoginAsAdminUsecase{
         const {accessToken, refreshToken} = 
            await this.generateTokensUsecase.execute({
             id: systemAdmin._id.toString(),
-            roles: Roles.SYSTEM_ADMIN
+            role: Roles.SYSTEM_ADMIN
            })
            
         return plainToInstance(AuthResponseDto, {accessToken, refreshToken})   
