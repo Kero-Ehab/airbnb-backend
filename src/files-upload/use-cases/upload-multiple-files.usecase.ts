@@ -1,7 +1,8 @@
-import { BadRequestException } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
 import { MulterFile } from "../types/multer-file.type";
 import { uploadSingleFileUseCase } from "./upload-single-file.usecase";
 
+@Injectable()
 export class uploadMultipleFilesUseCase{
     constructor(
         private readonly uploadSingleFileUseCase:uploadSingleFileUseCase
