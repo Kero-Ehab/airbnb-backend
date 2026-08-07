@@ -47,10 +47,14 @@ export class RefreshTokenUsecase{
             throw new ForbiddenException('Invalid refresh token')
         }
 
+        console.log("Incoming:", body.refreshToken.slice(0, 25), "...", body.refreshToken.slice(-10));
+        console.log("Stored hash:", refreshTokenDoc.refreshToken);
+
         const isRefreshTokenMatched = await bcrypt.compare(
             body.refreshToken,
             refreshTokenDoc.refreshToken
         ) 
+        console.log('Matched:', isRefreshTokenMatched);
 
         if(!isRefreshTokenMatched){
             throw new ForbiddenException('Invalid refresh token');
@@ -61,6 +65,11 @@ export class RefreshTokenUsecase{
                 id: refreshTokenDoc.userId,
                 role: decodedToken.payload.role as Roles
             })
+            console.log('NEW REFRESH TOKEN:', refreshToken);
+
+
+            console.log("Old == New ?", body.refreshToken === refreshToken);
+
 
         return plainToInstance(AuthResponseDto , {accessToken, refreshToken})
     }

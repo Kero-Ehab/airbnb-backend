@@ -1,4 +1,4 @@
-import { CanActivate, ExecutionContext, ForbiddenException } from "@nestjs/common";
+import { CanActivate, ExecutionContext, ForbiddenException, Injectable } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { Observable } from "rxjs";
 import { IS_PUBLIC_KEY } from "../decorators/public.decorators";
@@ -6,7 +6,7 @@ import { Roles } from "src/common/constants/roles.constants";
 import { ROLES_KEY } from "../decorators/roles.decorator";
 import { RequestWithUser } from "./jwt-auth.guard";
 
-
+@Injectable()
 export class RolesGuard implements CanActivate{
 
     constructor(

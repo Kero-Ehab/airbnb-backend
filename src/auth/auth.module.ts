@@ -46,8 +46,8 @@ import { RefreshTokenUsecase } from './use-cases/refresh-token.usecase';
         LoginUsecase,
         RefreshTokenRepository
     ],
-    controllers:[AuthController],
-    exports:[AuthService]
+    controllers:[AuthController],    
+    exports: [JwtModule, UserModule, SystemAdminModule],
 })
     
 export class AuthModule {}

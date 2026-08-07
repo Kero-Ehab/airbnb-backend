@@ -5,6 +5,7 @@ import { AuthResponseDto } from "./dto/auth-response.dto";
 import { LoginDto } from "./dto/login.dto";
 import { RefreshTokenDto } from "./dto/refresh-token.dto";
 import { CurrentAccount, Principal } from "./decorators/current-account.decorator";
+import { Public } from "./decorators/public.decorators";
 
 
 @Controller('auth')
@@ -12,16 +13,19 @@ export class AuthController{
 
     constructor(private readonly authService:AuthService){}
 
+    @Public()
     @Post('register')
     register(@Body() body: RegisterDto): Promise<AuthResponseDto>{
         return this.authService.register(body)
     }
 
+    @Public()
     @Post('login')
     login(@Body() body: LoginDto):Promise<AuthResponseDto>{
         return this.authService.login(body)
     }
 
+    @Public()
     @Post('refresh-token')
     refreshToken(@Body() body: RefreshTokenDto):Promise<AuthResponseDto>{
         return this.authService.refreshToken(body)

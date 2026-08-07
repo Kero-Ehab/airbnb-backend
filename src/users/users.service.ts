@@ -35,6 +35,9 @@ export class UserService {
         const user = await this.userReposatory.findOne(query)
         return plainToInstance(UserResponseDto, user)
     }
+    async findOneForAuth(query: QueryFilter<User>) {
+        return this.userReposatory.findOne(query);
+    }
 }
 
 

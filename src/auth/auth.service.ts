@@ -6,7 +6,6 @@ import { LoginDto } from "./dto/login.dto";
 import { LoginUsecase } from "./use-cases/login.usecase";
 import { RefreshTokenDto } from "./dto/refresh-token.dto";
 import { RefreshTokenUsecase } from "./use-cases/refresh-token.usecase";
-import { Public } from "./decorators/public.decorators";
 
 
 @Injectable()
@@ -17,17 +16,17 @@ export class AuthService{
         private readonly refreshTokenUsecase: RefreshTokenUsecase
     ){}
 
-    @Public()
+
     async register(body: RegisterDto):Promise<AuthResponseDto>{
         return this.registerUsecase.execute(body)
     }
     
-    @Public()
+
     async login(body: LoginDto):Promise<AuthResponseDto>{
         return this.loginUsecase.execute(body)
     }
 
-    @Public()
+
     async refreshToken(body: RefreshTokenDto):Promise<AuthResponseDto>{
         return this.refreshTokenUsecase.execute(body)
     }

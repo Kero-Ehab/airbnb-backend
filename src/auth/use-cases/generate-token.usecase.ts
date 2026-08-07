@@ -21,17 +21,21 @@ export class GenerateTokensUsecase {
             {expiresIn: this.configService.getOrThrow('REFRESH_TOKEN_EXPIRES_IN')}
         )
 
+        
         const hashRefreshToken = await bcrypt.hash(refreshToken, 10);
+        
+        console.log('HASH:', hashRefreshToken);
 
-        await this.refreshTokenRepository.findOneAndUpdate(
+       const updated = await this.refreshTokenRepository.findOneAndUpdate(
             {userId: payload.id},
             {refreshToken: hashRefreshToken},
             {
                 returnDocument: 'after',
                 upsert: true 
             }
-        )
+        ) 
 
+    console.log("Generated refresh:", refreshToken.slice(0, 25), "...", refreshToken.slice(-10));        
         return {accessToken, refreshToken};
     }
 }

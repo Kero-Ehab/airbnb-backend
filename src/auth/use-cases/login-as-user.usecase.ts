@@ -19,7 +19,7 @@ export class LoginAsUserUsecase{
 
     async execute(body: LoginDto){
         
-        const user = await this.userService.findOne({ email: body.email });
+        const user = await this.userService.findOneForAuth({ email: body.email });
         if(!user){
             throw new BadRequestException('User is not Exist')
         }
