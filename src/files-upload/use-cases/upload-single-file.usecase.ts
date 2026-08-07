@@ -8,7 +8,7 @@ export class uploadSingleFileUseCase{
 
     private readonly baseUrl = process.env.APP_BASE_URL;
 
-    async execute(file:MulterFile):Promise<String>{
+    async execute(file:MulterFile):Promise<string>{
         if(!file){
             throw new BadRequestExeption("NO File Provided")
         }
