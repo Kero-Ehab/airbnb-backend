@@ -39,6 +39,9 @@ export class RefreshTokenUsecase{
             throw new BadRequestException('Invalid refresh token');
         }
 
+        
+        console.log("Body: ",body.refreshToken)
+        
         const refreshTokenDoc = await this.refreshTokenRepository.findOne({
             userId: decodedToken.payload.id,
         })
@@ -47,8 +50,13 @@ export class RefreshTokenUsecase{
             throw new ForbiddenException('Invalid refresh token')
         }
 
-        console.log("Incoming:", body.refreshToken.slice(0, 25), "...", body.refreshToken.slice(-10));
         console.log("Stored hash:", refreshTokenDoc.refreshToken);
+
+
+        console.log(
+            "this is 1",
+            await bcrypt.compare(body.refreshToken, refreshTokenDoc.refreshToken)
+        );
 
         const isRefreshTokenMatched = await bcrypt.compare(
             body.refreshToken,
@@ -69,6 +77,11 @@ export class RefreshTokenUsecase{
 
 
             console.log("Old == New ?", body.refreshToken === refreshToken);
+            
+        console.log(
+            "this is 2",
+            await bcrypt.compare(body.refreshToken, refreshToken)
+        );
 
 
         return plainToInstance(AuthResponseDto , {accessToken, refreshToken})
