@@ -4,4 +4,5 @@ export enum ModelNames {
     AUTH = 'auth',
     REFRESH_TOKENS = 'refresh-tokens',
     SYSTEM_ADMINS = 'system-admins',
+    FORGET_PASSWORD = 'forget-password',   
 }
