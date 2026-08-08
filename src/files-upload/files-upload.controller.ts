@@ -5,6 +5,7 @@ import { diskStorage } from "multer";
 import { extname, join } from "path";
 import {v4 as uuidv4} from "uuid"
 import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express";
+import { Public } from "src/auth/decorators/public.decorators";
 
 
 const storageConfig = diskStorage({
@@ -15,7 +16,7 @@ const storageConfig = diskStorage({
   }
 })
 
-
+@Public()
 @Controller('files')
 export class FilesUploadController{
   
