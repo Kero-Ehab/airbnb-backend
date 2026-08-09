@@ -3,8 +3,9 @@ import { ForgetPasswordService } from "./forget-password.service";
 import { SendForgetPasswordOtpDto } from "./dtos/send-forget-password-otp.dto";
 import { VerifyForgetPasswordOtpDto } from "./dtos/verify-forget-password-otp.dto";
 import { ResetPasswordDto } from "./dtos/reset-password.dto";
+import { Public } from "src/auth/decorators/public.decorators";
 
-
+@Public()
 @Controller('forget-password')
 export class ForgetPasswordController{
     constructor(

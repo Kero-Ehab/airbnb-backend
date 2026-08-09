@@ -5,6 +5,7 @@ import { BadRequestExeption } from "src/common/errors-handling/custom-exceptions
 import { Connection } from "mongoose";
 import { UserService } from "src/users/users.service";
 import * as bcrypt from 'bcrypt'
+import { InjectConnection } from "@nestjs/mongoose";
 
 @Injectable()
 export class ResetPasswordUseCase {
@@ -12,8 +13,9 @@ export class ResetPasswordUseCase {
     private logger  = new Logger(ResetPasswordUseCase.name)
 
     constructor(
-        private readonly forgetPasswordRepository:ForgetPasswordRepository,
+        @InjectConnection()
         private readonly connection: Connection,
+        private readonly forgetPasswordRepository:ForgetPasswordRepository,
         private readonly userService: UserService
     ){}
 

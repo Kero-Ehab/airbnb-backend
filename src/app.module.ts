@@ -9,6 +9,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guard/jwt-auth.guard';
 import { RolesGuard } from './auth/guard/roles.guard';
 import { FilesUploadModule } from './files-upload/files-upload.module';
+import { ForgetPasswordModule } from './forget-password/forget-password.module';
 
 
 @Module({
@@ -17,7 +18,8 @@ import { FilesUploadModule } from './files-upload/files-upload.module';
     UserModule,
     AuthModule,
     OtpModule,
-    FilesUploadModule
+    FilesUploadModule,
+    ForgetPasswordModule
   ],
   controllers: [AppController],
   providers: [
