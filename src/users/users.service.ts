@@ -38,6 +38,14 @@ export class UserService {
     async findOneForAuth(query: QueryFilter<User>) {
         return this.userReposatory.findOne(query);
     }
+
+    async updateUserRawSession(
+        query: UpdateQuery<User>,
+        data: Record<string, any>,
+        session?: ClientSession,
+    ):Promise<void>{
+        await this.userReposatory.findOneAndUpdate(query, data, {session})
+    }
 }
 
 
