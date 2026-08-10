@@ -4,6 +4,7 @@ import { CurrencySchema } from "./schema/currency.schema";
 import { MongooseModule } from "@nestjs/mongoose";
 import { CurrencyRepository } from "./repository/currency.repository";
 import { CreateCurrencyUsecase } from "./use-cases/create-currency.usecase";
+import { FindAllCurrenciesUsecase } from "./use-cases/find-all-currencies.usecase";
 
 
 
@@ -16,6 +17,7 @@ import { CreateCurrencyUsecase } from "./use-cases/create-currency.usecase";
     providers:[
         CurrencyRepository,
         CreateCurrencyUsecase,
+        FindAllCurrenciesUsecase,
     ]
 })
 export class CurrenciesModule {}
