@@ -6,6 +6,7 @@ import { CurrencyRepository } from "./repository/currency.repository";
 import { CreateCurrencyUsecase } from "./use-cases/create-currency.usecase";
 import { FindAllCurrenciesUsecase } from "./use-cases/find-all-currencies.usecase";
 import { FindCurrencyByIdUsecase } from "./use-cases/find-currency-by-id.usecase";
+import { SoftDeleteCurrencyUsecase } from "./use-cases/soft-delete-currency.usecase";
 
 
 @Module({
@@ -18,7 +19,8 @@ import { FindCurrencyByIdUsecase } from "./use-cases/find-currency-by-id.usecase
         CurrencyRepository,
         CreateCurrencyUsecase,
         FindAllCurrenciesUsecase,
-        FindCurrencyByIdUsecase
+        FindCurrencyByIdUsecase,
+        SoftDeleteCurrencyUsecase
     ]
 })
 export class CurrenciesModule {}
