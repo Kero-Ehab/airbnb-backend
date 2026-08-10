@@ -46,7 +46,7 @@ export class ResetPasswordUseCase {
                 )
             })
         } catch (e) {
-            await session.abortTransaction()
+            //await session.abortTransaction()
             this.logger.error('Failed to reset password', e)
             throw new BadRequestException('Failed to reset password');
         }finally{

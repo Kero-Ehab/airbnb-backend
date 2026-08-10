@@ -5,4 +5,5 @@ export enum ModelNames {
     REFRESH_TOKENS = 'refresh-tokens',
     SYSTEM_ADMINS = 'system-admins',
     FORGET_PASSWORD = 'forget-password',   
+    CURRENCIES = 'currencies',
 }
