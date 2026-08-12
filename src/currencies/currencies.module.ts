@@ -9,6 +9,7 @@ import { FindCurrencyByIdUsecase } from "./use-cases/find-currency-by-id.usecase
 import { SoftDeleteCurrencyUsecase } from "./use-cases/soft-delete-currency.usecase";
 import { UpdateCurrencyUsecase } from "./use-cases/update-currency.usecase";
 import { CurrenciesService } from "./currencies.service";
+import { CurrenciesController } from "./currencies.controller";
 
 
 @Module({
@@ -25,6 +26,7 @@ import { CurrenciesService } from "./currencies.service";
         FindCurrencyByIdUsecase,
         SoftDeleteCurrencyUsecase,
         UpdateCurrencyUsecase,
-    ]
+    ],
+    controllers:[CurrenciesController]
 })
 export class CurrenciesModule {}

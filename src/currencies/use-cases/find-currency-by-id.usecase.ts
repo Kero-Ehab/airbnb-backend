@@ -16,6 +16,6 @@ export class FindCurrencyByIdUsecase {
         })
         if (!currency) throw new NotFoundException('No currency found');
 
-        return plainToInstance(CurrencyResponseDto, currency.toObject())
+        return plainToInstance(CurrencyResponseDto, currency)
     }
 }

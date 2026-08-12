@@ -10,6 +10,7 @@ import { JwtAuthGuard } from './auth/guard/jwt-auth.guard';
 import { RolesGuard } from './auth/guard/roles.guard';
 import { FilesUploadModule } from './files-upload/files-upload.module';
 import { ForgetPasswordModule } from './forget-password/forget-password.module';
+import { CurrenciesModule } from './currencies/currencies.module';
 
 
 @Module({
@@ -19,7 +20,8 @@ import { ForgetPasswordModule } from './forget-password/forget-password.module';
     AuthModule,
     OtpModule,
     FilesUploadModule,
-    ForgetPasswordModule
+    ForgetPasswordModule,
+    CurrenciesModule
   ],
   controllers: [AppController],
   providers: [
