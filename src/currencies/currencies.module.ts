@@ -8,6 +8,7 @@ import { FindAllCurrenciesUsecase } from "./use-cases/find-all-currencies.usecas
 import { FindCurrencyByIdUsecase } from "./use-cases/find-currency-by-id.usecase";
 import { SoftDeleteCurrencyUsecase } from "./use-cases/soft-delete-currency.usecase";
 import { UpdateCurrencyUsecase } from "./use-cases/update-currency.usecase";
+import { CurrenciesService } from "./currencies.service";
 
 
 @Module({
@@ -17,12 +18,13 @@ import { UpdateCurrencyUsecase } from "./use-cases/update-currency.usecase";
         ])
     ],
     providers:[
+        CurrenciesService,
         CurrencyRepository,
         CreateCurrencyUsecase,
         FindAllCurrenciesUsecase,
         FindCurrencyByIdUsecase,
         SoftDeleteCurrencyUsecase,
-        UpdateCurrencyUsecase
+        UpdateCurrencyUsecase,
     ]
 })
 export class CurrenciesModule {}

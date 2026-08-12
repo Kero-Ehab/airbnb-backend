@@ -9,15 +9,15 @@ export class SoftDeleteCurrencyUsecase{
         private readonly currencyRepository: CurrencyRepository
     ){}
 
-    async execute(dto: CurrencyIdDto):Promise<void>{
+    async execute(id: string):Promise<void>{
         const existingCurrency = await this.currencyRepository.findOne({
-            _id: dto.id,
+            _id: id,
             isDeleted: {$ne: true}
         })
         if (!existingCurrency){
             throw new NotFoundException('No currency found for this id');
         }
-        await this.currencyRepository.findByIdAndUpdate(dto.id,{
+        await this.currencyRepository.findByIdAndUpdate(id,{
             isDeleted:true,
             deletedAt: new Date()
         })
