@@ -11,7 +11,7 @@ export class CreateCountryUsecase{
         private readonly countryRepository: CountryRepository
     ){}
 
-    async execute(body: CreateCountryDto){
+    async execute(body: CreateCountryDto):Promise<CountryResposeDTo>{
         const existingCountry = await this.countryRepository.findOne({
             name:body.name,
             isDeleted: {$ne: true}
