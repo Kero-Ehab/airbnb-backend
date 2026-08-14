@@ -11,6 +11,7 @@ import { RolesGuard } from './auth/guard/roles.guard';
 import { FilesUploadModule } from './files-upload/files-upload.module';
 import { ForgetPasswordModule } from './forget-password/forget-password.module';
 import { CurrenciesModule } from './currencies/currencies.module';
+import { CountriesModule } from './countries/countries.module';
 
 
 @Module({
@@ -21,7 +22,8 @@ import { CurrenciesModule } from './currencies/currencies.module';
     OtpModule,
     FilesUploadModule,
     ForgetPasswordModule,
-    CurrenciesModule
+    CurrenciesModule,
+    CountriesModule
   ],
   controllers: [AppController],
   providers: [
