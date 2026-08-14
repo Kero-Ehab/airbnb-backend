@@ -7,4 +7,5 @@ export enum ModelNames {
     FORGET_PASSWORD = 'forget-password',   
     CURRENCIES = 'currencies',
     COUNTRIES = 'countries',
+    CITIES = 'cities',
 }
