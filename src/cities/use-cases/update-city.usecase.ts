@@ -14,7 +14,7 @@ export class UpdateCityUsecase{
     async execute (
         cityId:string,
         body: UpdateCityDto  
-    ){
+    ):Promise<CityResponseDto>{
         const city = await this.cityRepository.findOne({
             _id: cityId,
             isDeleted: false
