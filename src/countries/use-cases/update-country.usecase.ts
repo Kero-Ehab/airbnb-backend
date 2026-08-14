@@ -16,7 +16,7 @@ export class UpdateCountryUsecase{
         body: UpdateCountryDto
     ):Promise<CountryResposeDTo>{
         const country = await this.countryRepository.findOne({
-            id: countryId,
+            _id: countryId,
             isDeleted: {$ne: true}
         })
         
