@@ -12,6 +12,7 @@ import { FilesUploadModule } from './files-upload/files-upload.module';
 import { ForgetPasswordModule } from './forget-password/forget-password.module';
 import { CurrenciesModule } from './currencies/currencies.module';
 import { CountriesModule } from './countries/countries.module';
+import { CitiesModule } from './cities/cities.module';
 
 
 @Module({
@@ -23,7 +24,8 @@ import { CountriesModule } from './countries/countries.module';
     FilesUploadModule,
     ForgetPasswordModule,
     CurrenciesModule,
-    CountriesModule
+    CountriesModule,
+    CitiesModule
   ],
   controllers: [AppController],
   providers: [
