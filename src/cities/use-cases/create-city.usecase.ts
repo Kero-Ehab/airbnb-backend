@@ -15,11 +15,11 @@ export class CreateCityUsecase{
 
     async execute(body: CreateCityDto):Promise<CityResponseDto>{
         
-        await this.countriesService.getCountryById(body.country)
+        await this.countriesService.getCountryById(body.countryId)
 
         const existingCityByName = await this.cityRepository.findOne({
             name: body.name,
-            country: body.country,
+            country: body.countryId,
             isDeleted: false,
         })
 

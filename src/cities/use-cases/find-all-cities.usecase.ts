@@ -29,7 +29,7 @@ export class FindAllCitiesUsecase{
             page: query?.page,
             limit: query?.limit,
             ignoreLimit: query?.ignoreLimit,
-            populate: [{path: 'country', select: 'name'}],
+            populate: [{path: 'countryId', select: 'name'}],
             lean: true
         })
         return plainToInstance(PaginationResult<CityResponseDto>, result)
