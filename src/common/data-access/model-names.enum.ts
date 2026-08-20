@@ -8,4 +8,5 @@ export enum ModelNames {
     CURRENCIES = 'currencies',
     COUNTRIES = 'countries',
     CITIES = 'cities',
+    UNIT_CATEGORIES = 'unit-categories',    
 }
