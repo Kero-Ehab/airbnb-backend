@@ -1,22 +1,15 @@
 import { Injectable } from "@nestjs/common";
 import { AppSettingsRepository } from "../repositories/app-settings.repository";
-import { UpsertAppSettingsDto } from "../dtos/upsert-app-settings.dto";
 import { AppSettingsResponseDto } from "../dtos/app-settings-response.dto";
 import { plainToInstance } from "class-transformer";
 
 @Injectable()
-export class UpsertAppSettingsUsecase{
-    
+export class FindAppsettingsUseCase{
     constructor(
-        private readonly appSettingDto: AppSettingsRepository
+        private readonly appSettingsRepository: AppSettingsRepository
     ){}
-
-    async execute(body: UpsertAppSettingsDto): Promise<AppSettingsResponseDto>{
-        const appSettings = await this.appSettingDto.findOneAndUpdate(
-            {},
-            {$set: body},
-            {$upsert: true, returnDocument: 'after', lean:true}
-        )
-        return plainToInstance(AppSettingsResponseDto, appSettings)
+    async execute(): Promise<AppSettingsResponseDto>{
+        const appsettings = await this.appSettingsRepository.findOne({})
+        return plainToInstance(AppSettingsResponseDto, appsettings);
     }
 }
