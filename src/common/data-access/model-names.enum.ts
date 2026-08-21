@@ -9,4 +9,5 @@ export enum ModelNames {
     COUNTRIES = 'countries',
     CITIES = 'cities',
     UNIT_CATEGORIES = 'unit-categories',    
+    APP_SETTINGS = 'app-settings',
 }
