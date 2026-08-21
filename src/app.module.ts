@@ -13,6 +13,7 @@ import { ForgetPasswordModule } from './forget-password/forget-password.module';
 import { CurrenciesModule } from './currencies/currencies.module';
 import { CountriesModule } from './countries/countries.module';
 import { CitiesModule } from './cities/cities.module';
+import { UnitCategoriesModule } from './unit-categories/unit-categories.module';
 
 
 @Module({
@@ -25,7 +26,8 @@ import { CitiesModule } from './cities/cities.module';
     ForgetPasswordModule,
     CurrenciesModule,
     CountriesModule,
-    CitiesModule
+    CitiesModule,
+    UnitCategoriesModule
   ],
   controllers: [AppController],
   providers: [

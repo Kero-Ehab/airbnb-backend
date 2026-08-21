@@ -47,7 +47,7 @@ export class UnitCategoriesController{
         return this.unitCategoriesService.findAll(query);
     }
 
-    @Get()
+    @Get('/:id')
     async findById(
         @Param() param: UnitCategoryIdDto
     ): Promise<UnitCategoryResponseDto>{

@@ -13,7 +13,7 @@ export class SoftDeleteUnitCategoryUsecase{
             isDeleted:{$ne:true}
         })
         
-        if(existingUnitCategory){
+        if(!existingUnitCategory){
             throw new NotFoundException('No unit categories found for this id')
         }
 
