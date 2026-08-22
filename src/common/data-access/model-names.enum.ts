@@ -10,4 +10,5 @@ export enum ModelNames {
     CITIES = 'cities',
     UNIT_CATEGORIES = 'unit-categories',    
     APP_SETTINGS = 'app-settings',
+    UNITS = 'units',
 }
