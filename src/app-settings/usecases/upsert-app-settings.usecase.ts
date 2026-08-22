@@ -15,7 +15,7 @@ export class UpsertAppSettingsUsecase{
         const appSettings = await this.appSettingDto.findOneAndUpdate(
             {},
             {$set: body},
-            {$upsert: true, returnDocument: 'after', lean:true}
+            {upsert: true, returnDocument: 'after', lean:true}
         )
         return plainToInstance(AppSettingsResponseDto, appSettings)
     }
