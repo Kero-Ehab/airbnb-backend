@@ -1,5 +1,5 @@
 import { Roles } from "src/common/constants/roles.constants";
-import { CurruntUserData, IPrincipal } from "../interfaces/principal.interface";
+import { CurrentUserData , IPrincipal } from "../interfaces/principal.interface";
 import { createParamDecorator, ExecutionContext } from "@nestjs/common";
 import { RequestWithUser } from "../guard/jwt-auth.guard";
 
@@ -17,7 +17,7 @@ export const CurrentAccount = createParamDecorator(
 
 export class Principal implements IPrincipal{
     constructor(
-        public user: CurruntUserData,
+        public user: CurrentUserData ,
         public role: Roles,
     ){}
 }

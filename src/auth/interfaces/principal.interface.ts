@@ -1,12 +1,12 @@
 import { Roles } from "src/common/constants/roles.constants"
 
-export interface CurruntUserData{
+export interface CurrentUserData{
     _id: string,
     name: string,
     email: string
 }
 
 export interface IPrincipal{
-    user: CurruntUserData,
+    user: CurrentUserData ,
     role: Roles
 }
