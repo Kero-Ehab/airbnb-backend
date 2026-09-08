@@ -19,7 +19,7 @@ export class UnitsController{
     @Post()
     @UseInterceptors(FilesInterceptor('photos', MaxFileCount.UNIT_IMAGES))
     async create(
-        @UploadedFiles(createParseFilePipe())
+        //@UploadedFiles(createParseFilePipe())
     ){}
 
 
