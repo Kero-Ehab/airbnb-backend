@@ -1,8 +1,8 @@
 export enum ModelNames {
-    USERS = 'users',
-    OTP = 'opt',
-    AUTH = 'auth',
-    REFRESH_TOKENS = 'refresh-tokens',
+    USERS = 'users',   
+    OTP = 'opt',    
+    //AUTH = 'auth',  
+    REFRESH_TOKENS = 'refresh-tokens', 
     SYSTEM_ADMINS = 'system-admins',
     FORGET_PASSWORD = 'forget-password',   
     CURRENCIES = 'currencies',
@@ -11,4 +11,7 @@ export enum ModelNames {
     UNIT_CATEGORIES = 'unit-categories',    
     APP_SETTINGS = 'app-settings',
     UNITS = 'units',
+    BOOKINGS = 'bookings',
+    UNIT_REVIEWS = 'unit-reviews',
+    UNIT_FAVORITES = 'unit-favorites',
 }
