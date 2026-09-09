@@ -9,7 +9,7 @@ import {
 } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
-export class CreateUnitReviewDTO{
+export class CreateUnitReviewDto{
     @ApiProperty({
         description:'Booking MongoDB ID',
         example: '60d21b4967d0d8992e610c85'
