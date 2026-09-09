@@ -31,6 +31,6 @@ export class UpdateUnitUseCase{
             {$set: body},
             {returnDocument: 'after'}
         )
-        return plainToInstance(UnitResponseDto, updatedUnit)
+        return plainToInstance(UnitResponseDto, updatedUnit?.toObject())
     }
 }

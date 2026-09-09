@@ -15,6 +15,8 @@ import { CountriesModule } from './countries/countries.module';
 import { CitiesModule } from './cities/cities.module';
 import { UnitCategoriesModule } from './unit-categories/unit-categories.module';
 import { AppSettingsModule } from './app-settings/app-settings.module';
+import { SystemAdminModule } from './system-admins/system-admin.module';
+import { UnitsModule } from './unit/units.module';
 
 
 @Module({
@@ -29,7 +31,9 @@ import { AppSettingsModule } from './app-settings/app-settings.module';
     CountriesModule,
     CitiesModule,
     UnitCategoriesModule,
-    AppSettingsModule
+    AppSettingsModule,
+    SystemAdminModule,
+    UnitsModule
   ],
   controllers: [AppController],
   providers: [

@@ -13,7 +13,7 @@ export class FindOneUseCase{
 
     async execute(query: QueryFilter<Unit>):Promise<UnitResponseDto>{
         const unit = await this.unitRepository.findOne(query);
-        if(unit) {
+        if(!unit) {
             throw new NotFoundException('Unit not found')
         }
         return plainToInstance(UnitResponseDto, unit)

@@ -22,6 +22,8 @@ import { DeactivateUnitUsecase } from "./usecases/deactivate-unit.usecase";
 import { DeleteUnitPhotosUseCase } from "./usecases/delete-unit-photos.usecase";
 import { DeleteUnitUsecase } from "./usecases/delete-unit.usecase";
 import { UnitCategoriesModule } from "src/unit-categories/unit-categories.module";
+import { UnitsController } from "./units.controller";
+import { UnitsService } from "./units.service";
 
 
 @Module({
@@ -37,6 +39,7 @@ import { UnitCategoriesModule } from "src/unit-categories/unit-categories.module
     ],
     providers:[
         UnitRepository,
+        UnitsService,
         UnitValidationUseCase,
         CreateUnitUseCase,
         CheckUnitAuthUseCase,
@@ -52,7 +55,7 @@ import { UnitCategoriesModule } from "src/unit-categories/unit-categories.module
         DeleteUnitPhotosUseCase,
         DeleteUnitUsecase
     ],
-    controllers:[],
-    exports:[]
+    controllers:[UnitsController],
+    exports:[UnitsService]
 })
-export class UnitModule {}
+export class UnitsModule {}

@@ -24,6 +24,6 @@ export class CreateUnitUseCase{
             user: currentUser._id
         })
         
-        return plainToInstance(UnitResponseDto, unit)
+        return plainToInstance(UnitResponseDto, unit.toObject())
     }
 }
