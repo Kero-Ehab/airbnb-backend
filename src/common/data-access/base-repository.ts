@@ -58,6 +58,16 @@ export class PaginationResult<T>{
     }
 }
 
+
+    export interface PaginatedAggregationOptions {
+        page?: number;
+        limit?: number;
+        ignoreLimit?: boolean;
+        session?: ClientSession;
+    }
+
+
+
 export class BaseRepository<T>{
 
     constructor(public readonly model:Model<T>){}
@@ -218,11 +228,50 @@ export class BaseRepository<T>{
         return result;
     }
 
+    async paginatedAggregation<Response = any>(
+        pipeline: PipelineStage[],
+        options?: PaginatedAggregationOptions
+    ):Promise<PaginationResult<Response>>{
+        if(options?.ignoreLimit && options?.limit){
+            const optionsWithoutLimit = {...options};
+            delete optionsWithoutLimit.limit;
+            options = optionsWithoutLimit;
+        }
+        const skip = options?.ignoreLimit ? undefined : options?.page && options?.limit ?
+            (options.page - 1) * (options.limit) : undefined
+    
+        const limit = options?.ignoreLimit ? undefined : options?.limit
+        
+        const paginatedPipeline = [
+            ...pipeline,
+            ...(skip ? [{$skip: skip}] : []),
+            ...(limit ? [{$limit: limit}] : [])
+        ];
 
+        const counterPipeline = [
+            ...pipeline,
+            {$group: {_id: null, count: {$sum:1}}}
+        ]
 
+        const [documents, counter] = await Promise.all([
+            this.aggregate<Response>(paginatedPipeline, {
+                session: options?.session
+            }),
+            this.aggregate<{_id: null; count: number}>(counterPipeline, {
+                session:options?.session
+            })
+        ])
 
+        const totalCount = counter[0] ? counter[0].count : 0;
 
-
+        const response = new PaginationResult<Response>(
+            documents,
+            totalCount,
+            options?.page,
+            options?.limit,
+        );
+        return response;
+    }
 }
 
 
