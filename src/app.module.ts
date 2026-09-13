@@ -17,6 +17,7 @@ import { UnitCategoriesModule } from './unit-categories/unit-categories.module';
 import { AppSettingsModule } from './app-settings/app-settings.module';
 import { SystemAdminModule } from './system-admins/system-admin.module';
 import { UnitsModule } from './unit/units.module';
+import { UnitFavoritesModule } from './unit-favorites/unit-favorites.module';
 
 
 @Module({
@@ -33,7 +34,8 @@ import { UnitsModule } from './unit/units.module';
     UnitCategoriesModule,
     AppSettingsModule,
     SystemAdminModule,
-    UnitsModule
+    UnitsModule,
+    UnitFavoritesModule
   ],
   controllers: [AppController],
   providers: [
