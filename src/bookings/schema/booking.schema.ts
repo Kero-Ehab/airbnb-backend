@@ -1,5 +1,7 @@
 import { Prop, Schema } from "@nestjs/mongoose";
 import { ModelNames } from "src/common/data-access";
+import { BookingStatus } from "../enums/booking-status.enum";
+import { CancelBy } from "../enums/cancel-by.enum";
 
 
 @Schema({timestamps: true})
@@ -45,9 +47,20 @@ export class Booking {
     kidsCount?: number;
 
     @Prop()
-    notes?: string
+    notes?: string;
 
-    
+    @Prop({type: String, enum:BookingStatus, default: BookingStatus.PENDING})
+    status: BookingStatus;
 
+    @Prop()
+    cancellationReason?: string;
 
+    @Prop()
+    cancellationDate?: Date;
+
+    @Prop({type: String, enum: CancelBy})
+    cancelBy?: CancelBy;
+
+    // @Prop()
+    // guestReview?: GuestReview;
 }
