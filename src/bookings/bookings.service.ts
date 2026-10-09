@@ -9,7 +9,7 @@ import { CurrentUserData } from '../auth/interfaces/principal.interface';
 import { FindAllBookingsDto } from './dtos/find-all-bookings.dto';
 import { PaginationResult } from 'src/common/data-access';
 import { FindAllBookingsUseCase } from './usecases/find-all-bookings.usecase';
-//import { FindMyBookingsUsecase } from './usecases/find-my-bookings.usecase';
+import { FindMyBookingsUsecase } from './usecases/find-my-bookings.usecase';
 import { FindByIdUseCase } from './usecases/find-by-id.usecase';
 import { Principal } from '../auth/decorators/current-account.decorator';
 import { UpdateBookingRequestDto } from './dtos/update-booking-request.dto';
@@ -20,7 +20,6 @@ import { ChangeBookingStatusDto } from './dtos/change-booking-status.dto';
 import { ChangeBookingStatusByHostUseCase } from './usecases/change-booking-status-by-host.usecase';
 import { GuestReviewDto } from './dtos/guest-review.dto';
 import { ReviewBookingUseCase } from './usecases/review-booking.usecase';
-//import { ReviewBookingUseCase } from './usecases/review-booking.usecase';
 
 @Injectable()
 export class BookingsService {
@@ -28,7 +27,7 @@ export class BookingsService {
     private readonly checkAvailabilityUseCase: CheckAvailabilityUseCase,
     private readonly createBookingUseCase: BookingRequestUseCase,
     private readonly findAllBookingsUseCase: FindAllBookingsUseCase,
-    //private readonly findMyBookingsUseCase: FindMyBookingsUsecase,
+    private readonly findMyBookingsUseCase: FindMyBookingsUsecase,
     private readonly findByIdUseCase: FindByIdUseCase,
     //private readonly updateBookingByGuestUsecase: UpdateBookingByGuestUsecase,
     private readonly cancelBookingByGuestUseCase: CancelBookingByGuestUseCase,
@@ -55,12 +54,12 @@ export class BookingsService {
     return this.findAllBookingsUseCase.execute(query);
   }
 
-//   findMine(
-//     query: FindAllBookingsDto,
-//     user: CurrentUserData,
-//   ): Promise<PaginationResult<BookingResponseDto>> {
-//     return this.findMyBookingsUseCase.execute(query, user);
-//   }
+  findMine(
+    query: FindAllBookingsDto,
+    user: CurrentUserData,
+  ): Promise<PaginationResult<BookingResponseDto>> {
+    return this.findMyBookingsUseCase.execute(query, user);
+  }
 
   async findById(
     bookId: string,
