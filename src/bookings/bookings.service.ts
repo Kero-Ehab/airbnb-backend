@@ -13,7 +13,7 @@ import { FindMyBookingsUsecase } from './usecases/find-my-bookings.usecase';
 import { FindByIdUseCase } from './usecases/find-by-id.usecase';
 import { Principal } from '../auth/decorators/current-account.decorator';
 import { UpdateBookingRequestDto } from './dtos/update-booking-request.dto';
-//import { UpdateBookingByGuestUsecase } from './usecases/update-booking-by-guest.usecase';
+import { UpdateBookingByGuestUsecase } from './usecases/update-booking-by-guest.usecase';
 import { CancelBookingByGuestDto } from './dtos/cancel-booking-by-guest.dto';
 import { CancelBookingByGuestUseCase } from './usecases/cancel-booking-by-guest.usecase';
 import { ChangeBookingStatusDto } from './dtos/change-booking-status.dto';
@@ -29,7 +29,7 @@ export class BookingsService {
     private readonly findAllBookingsUseCase: FindAllBookingsUseCase,
     private readonly findMyBookingsUseCase: FindMyBookingsUsecase,
     private readonly findByIdUseCase: FindByIdUseCase,
-    //private readonly updateBookingByGuestUsecase: UpdateBookingByGuestUsecase,
+    private readonly updateBookingByGuestUsecase: UpdateBookingByGuestUsecase,
     private readonly cancelBookingByGuestUseCase: CancelBookingByGuestUseCase,
     private readonly changeBookingStatusByHostUseCase: ChangeBookingStatusByHostUseCase,
     private readonly reviewBookingUseCase: ReviewBookingUseCase,
@@ -68,13 +68,13 @@ export class BookingsService {
     return this.findByIdUseCase.execute(bookId, principal);
   }
 
-//   updateByGuest(
-//     id: string,
-//     body: UpdateBookingRequestDto,
-//     user: CurrentUserData,
-//   ): Promise<BookingResponseDto> {
-//     return this.updateBookingByGuestUsecase.execute(id, body, user);
-//   }
+  updateByGuest(
+    id: string,
+    body: UpdateBookingRequestDto,
+    user: CurrentUserData,
+  ): Promise<BookingResponseDto> {
+    return this.updateBookingByGuestUsecase.execute(id, body, user);
+  }
 
   async cancelByGuest(
     id: string,
